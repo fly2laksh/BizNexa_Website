@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BizNexa Solutions | Data Management, Zoho Customisation, Finance & Web Solutions</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --navy: #0F172A;
+            --blue: #2563EB;
+            --cyan: #06B6D4;
+            --light-bg: #F8FAFC;
+            --text-dark: #1E293B;
+            --text-muted: #64748B;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Header / Navbar */
+        header {
+            background: #ffffff;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 2rem;
+        }
+
+        .logo-img {
+            height: 80px;
+            width: auto;
+            display: block;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            margin-left: 1.5rem;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--blue);
+        }
+
+        /* Dropdown Menu CSS */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown .dropbtn {
+            text-decoration: none;
+            color: var(--text-dark);
+            margin-left: 1.5rem;
+            font-weight: 500;
+            cursor: pointer;
+            padding: 0.5rem 0;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        .dropdown:hover .dropbtn {
+            color: var(--blue);
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 1.5rem;
+            background-color: #ffffff;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.1);
+            border-radius: 6px;
+            overflow: hidden;
+            z-index: 1001;
+            border-top: 3px solid var(--blue);
+        }
+
+        .dropdown-content a {
+            color: var(--text-dark);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            margin-left: 0;
+            font-size: 0.95rem;
+            transition: background 0.2s;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #F1F5F9;
+            color: var(--blue);
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--navy) 0%, #1E293B 100%);
+            color: #ffffff;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero h1 span {
+            color: var(--cyan);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #94A3B8;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(90deg, var(--blue), var(--cyan));
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+            transition: transform 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Services Section */
+        .services {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--navy);
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+        }
+
+        /* Data Management Feature Showcase */
+        .dm-showcase {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            padding: 2rem;
+            margin-bottom: 4rem;
+            border-top: 5px solid var(--blue);
+            scroll-margin-top: 100px;
+        }
+
+        .dm-tabs {
+            display: flex;
+            gap: 1rem;
+            border-bottom: 2px solid #E2E8F0;
+            margin-bottom: 2rem;
+            overflow-x: auto;
+        }
+
+        .dm-tab-btn {
+            background: none;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: 0.3s;
+            white-space: nowrap;
+        }
+
+        .dm-tab-btn.active, .dm-tab-btn:hover {
+            color: var(--blue);
+            border-bottom-color: var(--blue);
+        }
+
+        .dm-content {
+            display: none;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .dm-content.active {
+            display: grid;
+        }
+
+        .dm-image-box {
+            width: 100%;
+            height: 320px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            background: #F1F5F9;
+        }
+
+        .dm-image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .dm-details h3 {
+            color: var(--navy);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .dm-info-block {
+            margin-bottom: 1rem;
+            background: var(--light-bg);
+            padding: 1rem;
+            border-left: 4px solid var(--cyan);
+            border-radius: 0 6px 6px 0;
+        }
+
+        .dm-info-block strong {
+            color: var(--navy);
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .dm-info-block p {
+            font-size: 0.95rem;
+            color: var(--text-dark);
+        }
+
+
+        /* ==============================================================
+           🔥 NEW CIRCUIT BOARD ENERGY FLOW TREEMAP CSS
+           ============================================================== */
+        .circuit-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto 4rem auto;
+            padding: 40px 20px;
+            background: #070b19; /* Dark tech background */
+            border-radius: 16px;
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5), inset 0 0 30px rgba(6, 182, 212, 0.05);
+            background-image: 
+                radial-gradient(rgba(56, 189, 248, 0.1) 1px, transparent 1px),
+                radial-gradient(rgba(56, 189, 248, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            overflow-x: auto;
+        }
+
+        .circuit-tree {
+            display: flex;
+            justify-content: center;
+            min-width: 1000px; /* Forces scroll on small screens to maintain tree shape */
+        }
+
+        .circuit-tree ul {
+            padding-top: 30px; 
+            position: relative;
+            display: flex; 
+            justify-content: center;
+        }
+
+        .circuit-tree li {
+            float: left; 
+            text-align: center;
+            list-style-type: none;
+            position: relative;
+            padding: 30px 10px 0 10px;
+        }
+
+        /* ⚡ Trace Lines (PCB Wires) */
+        .circuit-tree li::before, .circuit-tree li::after {
+            content: '';
+            position: absolute; top: 0; right: 50%;
+            border-top: 2px solid #06b6d4;
+            width: 50%; height: 30px;
+            z-index: 1;
+            /* Glowing Current Flow Animation */
+            animation: circuitGlow 1.2s infinite alternate ease-in-out;
+        }
+
+        .circuit-tree li::after {
+            right: auto; left: 50%;
+            border-left: 2px solid #06b6d4;
+        }
+
+        /* Fixes for edges */
+        .circuit-tree li:only-child::after, .circuit-tree li:only-child::before { display: none; }
+        .circuit-tree li:only-child { padding-top: 0; }
+        .circuit-tree li:first-child::before, .circuit-tree li:last-child::after { border: 0 none; }
+        .circuit-tree li:first-child::after { border-radius: 8px 0 0 0; }
+        .circuit-tree li:last-child::before { border-right: 2px solid #06b6d4; border-radius: 0 8px 0 0; }
+
+        /* Vertical line dropping from parent */
+        .circuit-tree ul ul::before {
+            content: '';
+            position: absolute; top: 0; left: 50%;
+            border-left: 2px solid #06b6d4;
+            width: 0; height: 30px;
+            transform: translateX(-1px);
+            animation: circuitGlow 1.2s infinite alternate ease-in-out;
+        }
+
+        /* Keyframes for Current Flow Effect */
+        @keyframes circuitGlow {
+            0% { border-color: rgba(6, 182, 212, 0.2); box-shadow: 0 0 0 transparent; }
+            100% { border-color: #38bdf8; filter: drop-shadow(0 0 8px #38bdf8); }
+        }
+
+        /* 🟦 The Nodes (Microchips) */
+        .circuit-node {
+            display: inline-block;
+            padding: 12px 20px;
+            border-radius: 6px;
+            background: #0f172a;
+            color: #f8fafc;
+            border: 2px solid #38bdf8;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: relative;
+            z-index: 10;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.2), inset 0 0 10px rgba(56, 189, 248, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .circuit-node:hover {
+            transform: scale(1.05) translateY(-3px);
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.6), inset 0 0 15px rgba(56, 189, 248, 0.4);
+            background: #1e293b;
+        }
+
+        /* Solder Joint (Dot) on top of each node */
+        .circuit-node::before {
+            content: '';
+            position: absolute;
+            top: -7px; left: 50%;
+            transform: translateX(-50%);
+            width: 10px; height: 10px;
+            background: #06b6d4;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #38bdf8;
+            z-index: 11;
+            animation: pulseDot 2s infinite;
+        }
+        @keyframes pulseDot {
+            0% { transform: translateX(-50%) scale(1); opacity: 0.8; }
+            50% { transform: translateX(-50%) scale(1.3); opacity: 1; box-shadow: 0 0 20px #fff; }
+            100% { transform: translateX(-50%) scale(1); opacity: 0.8; }
+        }
+
+        /* Root Node (Main CPU) */
+        .node-root {
+            font-size: 1.2rem;
+            padding: 16px 35px;
+            background: linear-gradient(135deg, #1e3a8a, #38bdf8);
+            border-color: #7dd3fc;
+            box-shadow: 0 0 30px rgba(56, 189, 248, 0.5);
+        }
+        .node-root::before { display: none; } /* No wire above root */
+
+        /* Category Branches */
+        .node-branch {
+            border-color: #8b5cf6;
+            color: #ddd6fe;
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
+        }
+        .node-branch:hover {
+            border-color: #a78bfa;
+            box-shadow: 0 0 25px rgba(139, 92, 246, 0.7);
+        }
+        .node-branch::before { background: #8b5cf6; box-shadow: 0 0 10px #8b5cf6; }
+
+        /* Final Sub-services (Leaves) */
+        .node-leaf {
+            font-size: 0.75rem;
+            padding: 10px 15px;
+            border-color: #10b981;
+            color: #a7f3d0;
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.2);
+            background: #064e3b;
+        }
+        .node-leaf:hover {
+            border-color: #34d399;
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.6);
+        }
+        .node-leaf::before { background: #10b981; box-shadow: 0 0 10px #10b981; }
+
+
+        /* Core Services Cards Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid var(--blue);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--navy);
+        }
+
+        .card ul {
+            list-style: none;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .card ul li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.2rem;
+        }
+
+        .card ul li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--cyan);
+            font-weight: bold;
+        }
+
+        /* Why Choose Us */
+        .why-us {
+            background: #ffffff;
+            padding: 4rem 2rem;
+            border-top: 1px solid #E2E8F0;
+        }
+
+        .why-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+            gap: 1.5rem;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            color: var(--blue);
+        }
+
+        /* Contact Section */
+        .contact {
+            max-width: 600px;
+            margin: 4rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .contact form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .contact input, .contact select, .contact textarea {
+            padding: 0.8rem;
+            border: 1px solid #CBD5E1;
+            border-radius: 5px;
+            outline: none;
+            font-size: 0.95rem;
+        }
+
+        .contact input:focus, .contact select:focus, .contact textarea:focus {
+            border-color: var(--blue);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--navy);
+            color: #94A3B8;
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .dm-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <div>
+                <img src="https://lh3.googleusercontent.com/d/19ctFTPdtYizyNUJlxtBPhs4iivXk1a4B" alt="BizNexa Solutions Logo" class="logo-img">
+            </div>
+            <nav>
+                <!-- Services Dropdown Tab -->
+                <div class="dropdown">
+                    <span class="dropbtn">Services ▾</span>
+                    <div class="dropdown-content">
+                        <a href="#data-management">Data Management</a>
+                        <a href="#operational-flow">BizNexa Tree Map</a>
+                        <a href="#services">All Core Services</a>
+                    </div>
+                </div>
+                <a href="#why-us">About Us</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Transforming Complex Data into <span>Actionable Growth</span></h1>
+            <p>We help businesses automate workflows, build dynamic analytics dashboards, and deploy custom web solutions—saving up to 60% of manual effort.</p>
+            <a href="#contact" class="btn">Get a Free Audit</a>
+        </div>
+    </section>
+
+    <!-- Data Management Detailed Feature Showcase -->
+    <section class="services" id="data-management">
+        <div class="section-title">
+            <h2>Data Management Capabilities</h2>
+            <p>Explore how we fix, structure, automate, and visualize your business data.</p>
+        </div>
+
+        <div class="dm-showcase">
+            <div class="dm-tabs">
+                <button class="dm-tab-btn active" onclick="openTab(event, 'tab-cleaning')">1. Data Cleaning</button>
+                <button class="dm-tab-btn" onclick="openTab(event, 'tab-inventory')">2. Inventory Tracking</button>
+                <button class="dm-tab-btn" onclick="openTab(event, 'tab-automation')">3. Automation</button>
+                <button class="dm-tab-btn" onclick="openTab(event, 'tab-dashboards')">4. Dashboards & KPIs</button>
+            </div>
+
+            <!-- Tab 1: Data Cleaning -->
+            <div id="tab-cleaning" class="dm-content active">
+                <div class="dm-image-box">
+                    <img src="https://lh3.googleusercontent.com/d/16lep1wZhlGibUTTZ-mghZkQV39z3c0aj" alt="Data Cleaning">
+                </div>
+                <div class="dm-details">
+                    <h3>Data Cleaning & Standardization</h3>
+                    <div class="dm-info-block">
+                        <strong>Why You Need It:</strong>
+                        <p>Messy, duplicate, or unorganized records lead to incorrect business analysis and costly operational errors. We clean and structure raw datasets for 100% accuracy.</p>
+                    </div>
+                    <div class="dm-info-block">
+                        <strong>For Whom:</strong>
+                        <p>SMEs and Retailers handling multi-source sales, stock, or customer data with inconsistencies, missing records, or duplicate entries.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 2: Inventory Tracking -->
+            <div id="tab-inventory" class="dm-content">
+                <div class="dm-image-box">
+                    <img src="https://lh3.googleusercontent.com/d/1Pf3MlEEFWewFdYKoWeU0jHEWCYuccvsJ" alt="Inventory Tracking">
+                </div>
+                <div class="dm-details">
+                    <h3>Advanced Inventory & Stock Tracking</h3>
+                    <div class="dm-info-block">
+                        <strong>Why You Need It:</strong>
+                        <p>Prevents dead stock buildup and stock-out situations using dynamic Excel/Google Sheets formulas (XLOOKUP, SUMIFS, INDEX-MATCH) and automated re-order level triggers.</p>
+                    </div>
+                    <div class="dm-info-block">
+                        <strong>For Whom:</strong>
+                        <p>Retail store owners, wholesalers, and warehouse managers seeking accurate, real-time stock monitoring without expensive software.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 3: Automation -->
+            <div id="tab-automation" class="dm-content">
+                <div class="dm-image-box">
+                    <img src="https://lh3.googleusercontent.com/d/1Jrb71_qTY3ZS4dwDvbyxj97c66JRA44K" alt="Automation">
+                </div>
+                <div class="dm-details">
+                    <h3>Process & Workflow Automation</h3>
+                    <div class="dm-info-block">
+                        <strong>Why You Need It:</strong>
+                        <p>Replaces hours of repetitive daily copy-paste work with 1-click execution using Power Query, VBA macros, and Google Apps Script—reducing manual workload by up to 70%.</p>
+                    </div>
+                    <div class="dm-info-block">
+                        <strong>For Whom:</strong>
+                        <p>Businesses wasting valuable team hours on daily manual data entry, multi-file merging, or routine email/whatsapp triggers.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 4: Dashboards -->
+            <div id="tab-dashboards" class="dm-content">
+                <div class="dm-image-box">
+                    <img src="https://lh3.googleusercontent.com/d/116r0xpV_CaC87Lx6CuoHtGK3neiTToki" alt="Dashboards & KPIs">
+                </div>
+                <div class="dm-details">
+                    <h3>Interactive Dashboards & KPI Reports</h3>
+                    <div class="dm-info-block">
+                        <strong>Why You Need It:</strong>
+                        <p>Transforms complex numbers into clear, visual Power BI and Google Looker Studio charts for fast 5-second decision making accessible 24/7 on phone or desktop.</p>
+                    </div>
+                    <div class="dm-info-block">
+                        <strong>For Whom:</strong>
+                        <p>Business owners and executives needing instant clarity on sales growth, top products, cash flow, and overall operational health.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: Circuit Energy Treemap -->
+    <section class="services" id="operational-flow">
+        <div class="section-title">
+            <h2>BizNexa Ecosystem</h2>
+            <p>Our complete operational architecture flowing seamlessly across domains.</p>
+        </div>
+        
+        <div class="circuit-container">
+            <div class="circuit-tree">
+                <ul>
+                    <li>
+                        <!-- ROOT NODE -->
+                        <div class="circuit-node node-root">
+                            <i class="fa-solid fa-microchip"></i> BizNexa Solutions
+                        </div>
+                        <ul>
+                            <!-- BRANCH 1: Data Management -->
+                            <li>
+                                <div class="circuit-node node-branch">
+                                    <i class="fa-solid fa-database"></i> Data Management
+                                </div>
+                                <ul>
+                                    <li><div class="circuit-node node-leaf">Data Cleaning</div></li>
+                                    <li><div class="circuit-node node-leaf">Data Automation</div></li>
+                                    <li><div class="circuit-node node-leaf">Dashboard KPI</div></li>
+                                    <li><div class="circuit-node node-leaf">Excel / Google Sheet</div></li>
+                                </ul>
+                            </li>
+                            <!-- BRANCH 2: Accounting & Finance -->
+                            <li>
+                                <div class="circuit-node node-branch">
+                                    <i class="fa-solid fa-calculator"></i> Accounting & Finance
+                                </div>
+                                <ul>
+                                    <li><div class="circuit-node node-leaf">Tally / Zoho Entry</div></li>
+                                    <li><div class="circuit-node node-leaf">GST Filing Template</div></li>
+                                    <li><div class="circuit-node node-leaf">Migration Template</div></li>
+                                </ul>
+                            </li>
+                            <!-- BRANCH 3: CRM -->
+                            <li>
+                                <div class="circuit-node node-branch">
+                                    <i class="fa-solid fa-users-gear"></i> CRM
+                                </div>
+                                <ul>
+                                    <li><div class="circuit-node node-leaf">Zoho CRM Implementation</div></li>
+                                    <li><div class="circuit-node node-leaf">Deluge Scripts</div></li>
+                                    <li><div class="circuit-node node-leaf">System Tracking</div></li>
+                                </ul>
+                            </li>
+                            <!-- BRANCH 4: Professional / Fresher -->
+                            <li>
+                                <div class="circuit-node node-branch">
+                                    <i class="fa-solid fa-user-graduate"></i> Professional / Fresher
+                                </div>
+                                <ul>
+                                    <li><div class="circuit-node node-leaf">Resume Creation</div></li>
+                                    <li><div class="circuit-node node-leaf">Staff Training</div></li>
+                                    <li><div class="circuit-node node-leaf">Excel Training</div></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Services Section -->
+    <section class="services" id="services">
+        <div class="section-title">
+            <h2>Our Core Expertise</h2>
+            <p>End-to-end data, automation, and web solutions tailored for business growth.</p>
+        </div>
+        <div class="grid">
+            <div class="card">
+                <h3>📊 Data Analytics & Dashboards</h3>
+                <ul>
+                    <li>Power BI & Google Looker Studio</li>
+                    <li>Real-time Metrics Tracking</li>
+                    <li>SQL & Excel Integration</li>
+                    <li>Automated Reporting Tools</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>⚙️ Process Automation</h3>
+                <ul>
+                    <li>Google Sheets & Workflow Scripts</li>
+                    <li>WHMCS, Brevo & Integration Setup</li>
+                    <li>WhatsApp & Email Triggers</li>
+                    <li>Reduce Manual Work up to 70%</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>💰 Financial & Reconciliation</h3>
+                <ul>
+                    <li>Advanced Excel & Power Query</li>
+                    <li>GST & Tax Compliance Models</li>
+                    <li>Accounts Reconciliation Systems</li>
+                    <li>Executive Financial Dashboards</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>🤖 AI Web & Tool Building</h3>
+                <ul>
+                    <li>Fast Corporate Websites</li>
+                    <li>Custom Web Forms & Calculators</li>
+                    <li>API & Cloud Integration</li>
+                    <li>High-Converting Landing Pages</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-us" id="why-us">
+        <div class="why-container">
+            <h2>The BizNexa Advantage</h2>
+            <p>Combining decade-long financial analytics expertise with cutting-edge business automation.</p>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>10+</h3>
+                    <p>Years Experience</p>
+                </div>
+                <div class="stat-item">
+                    <h3>60%</h3>
+                    <p>Workload Reduced</p>
+                </div>
+                <div class="stat-item">
+                    <h3>100%</h3>
+                    <p>Data Accuracy Focus</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="section-title">
+            <h2>Let's Talk Business</h2>
+            <p>Ready to streamline your operations?</p>
+        </div>
+        <form onsubmit="alert('Thank you! We will reach out shortly.'); return false;">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email Address" required>
+            <select required>
+                <option value="" disabled selected>Select Required Service</option>
+                <option value="analytics">Data Analytics & Dashboards</option>
+                <option value="automation">Process Automation</option>
+                <option value="financial">Financial & ERP Reporting</option>
+                <option value="web">AI Web / Tool Building</option>
+            </select>
+            <textarea rows="4" placeholder="Briefly describe your business needs..." required></textarea>
+            <button type="submit" class="btn">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 BizNexa Solutions. All Rights Reserved. | Designed for Innovation</p>
+    </footer>
+
+    <!-- Tab Script -->
+    <script>
+        function openTab(evt, tabName) {
+            var i, content, tabbtns;
+            content = document.getElementsByClassName("dm-content");
+            for (i = 0; i < content.length; i++) {
+                content[i].classList.remove("active");
+            }
+            tabbtns = document.getElementsByClassName("dm-tab-btn");
+            for (i = 0; i < tabbtns.length; i++) {
+                tabbtns[i].classList.remove("active");
+            }
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+</body>
+</html>
